@@ -1,0 +1,21 @@
+import numpy as np
+import pandas as pd
+from pandas import DataFrame, Series
+import seaborn as sns
+import matplotlib.pyplot as plt
+from matplotlib.colors import ListedColormap
+
+processes=pd.read_excel('C:/Users/nplatchk/Desktop/Risk map/Processes.xlsx')
+processes.sort_values(by='Rank',inplace=True)
+#processes_sq=processes['Process_short'].values.reshape(13,13)
+processes['Year_reviewed']=processes['Year_reviewed'].astype(str)
+rank_sq=processes['Rank'].values.reshape(13,13)
+
+processes['Combined']=processes[['Units','Process_short','Year_reviewed']].apply(lambda x: '\n'.join(x), axis=1)
+processes_sq=processes['Combined'].values.reshape(13,13)
+
+
+
+fig,ax=plt.subplots(figsize=(20,20))
+
+sns.heatmap(rank_sq,annot=processes_sq, annot_kws={'size':7},fmt='',linewidths=.5,cmap='YlGn',cbar=True,ax=ax)
