@@ -5,7 +5,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 
-processes=pd.read_excel('C:/Users/nplatchk/Desktop/Risk map/Processes.xlsx')
+processes=pd.read_excel('')
 processes.sort_values(by='Rank',inplace=True)
 #processes_sq=processes['Process_short'].values.reshape(13,13)
 processes['Year_reviewed']=processes['Year_reviewed'].astype(str)
